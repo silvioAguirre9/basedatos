@@ -1,0 +1,49 @@
+{
+    "Personas": [
+        {
+            "id": 1,
+            "nombre": "Mariano",
+            "apellido": "Laca",
+            "apodo": "jesus",
+            "telefono": "34343434",
+            "direccion": "pythones.net"
+        },
+        {
+            "id": 2,
+            "nombre": "Martin",
+            "apellido": "Paredes",
+            "apodo": "el ",
+            "telefono": "343455555",
+            "direccion": "los buitres 123"
+        },
+        {
+            "id": 3,
+            "nombre": "Mar",
+            "apellido": "Paredes",
+            "apodo": "el loc",
+            "telefono": "343455555",
+            "direccion": "los buitres 123"
+        },
+        {
+            "id": 4,
+            "nombre": "jese",
+            "apellido": "estevan",
+            "apodo": "negro",
+            "telefono": "465546",
+            "direccion": "lavida"
+        },
+        {
+            "id": 7,
+            "nombre": "joaquin",
+            "apellido": "olson",
+            "apodo": "chino",
+            "telefono": "45681231",
+            "direccion": "marte"
+        }
+    ],
+    "Configuraciones": [
+        {
+            "contador_id_db": 7
+        }
+    ]
+}

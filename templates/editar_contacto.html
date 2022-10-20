@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es"> <!--Cambiamos a español-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer App en Flask</title> <!--Modificamos el Título-->
+</head>
+<body><!--Aquí comienza el cuerpo de nuestro HTML-->
+    <h1 style = "text-align:center">Directorio Telefónico - Mi primer aplicación en Flask</h1> <!--Titulo principal centrado-->
+    <br>
+    <div>    <!--Creamos un div contenedor-->
+        <div style="width: 60%; float:left; text-align:center;">    <!--Creamos el div de la izquierda-->
+            <h2>Datos completos de la persona</h2>  <!--Titulo-->
+            <table border = "1" style = "width: 100%;"> <!--Creamos la tabla con borde-->
+                <tr><!--Creamos una fila-->
+                    <td>Nombre</td> <!--Dentro de la fila las columnas-->
+                    <td>Apellido</td>
+                    <td>Apodo</td>
+                    <td>Teléfono</td>
+                    <td>Dirección</td>
+                </tr>
+                {% for (index, persona) in Todos.items() %}
+                {% if index == index_ver %}
+                <tr><!--creamos otra fila-->
+                    <td>{{persona.nombre}}</td> <!--Aquí se cargarán los datos correspondientes-->
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.apodo}}</td>
+                    <td>{{persona.telefono}}</td>
+                    <td>{{persona.direccion}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>    <!--Fin de la tabla-->
+            <h2>Modificar Persona</h2>
+            <h4>Base de datos JSON  </h4>
+            <table border = "1" style = "width: 100%;"> <!--Creamos la tabla con borde-->
+                <tr><!--Creamos una fila-->
+                    <td>Nombre</td> <!--Dentro de la fila las columnas-->
+                    <td>Apellido</td>
+                    <td>Apodo</td>
+                    <td>Teléfono</td>
+                    <td>Dirección</td>
+                </tr>
+                <!-- Inicio del form-->
+                <form action = "{{url_for('editar', index = index_ver)}}" method = "post">
+                <tr><!--creamos otra fila-->
+                      <!--Pasamos el id oculto -->
+                    <input type = "hidden" name = "id" value = {{Todos[index_ver].id}}></input> 
+                    <td><input type = "name" name = "Nombre" value = "{{Todos[index_ver].nombre}}" style = "max-width: 100px;"></input></td> <!--Aquí se cargarán los datos correspondientes-->
+                    <td><input type = "name" name = "Apellido" value = "{{Todos[index_ver].apellido}}" style = "max-width: 100px;"></input></td>
+                    <td><input type = "name" name = "Apodo" value = "{{Todos[index_ver].apodo}}" style = "max-width: 100px;"></input></td>
+                    <td><input type = "tel" name = "Telefono" value = "{{Todos[index_ver].telefono}}" style = "max-width: 100px;"></input></td>
+                    <td><input type = "name" name = "Direccion" value = "{{Todos[index_ver].direccion}}" style = "max-width: 100px;"></input></td>
+                </tr>
+            
+            </table><!--Fin de la tabla-->
+            <br>
+            <a href="#"><button type="submit">Modificar</button></a>   
+        </form><!-- Fin del formulario-->
+        
+        </div>  <!--Cierre del div de la izquierda-->
+        <div style="width: 40%; float:right; text-align:center;"> <!--Div de la derecha-->
+            <h2>Personas</h2> <!--Titulo-->
+            <table border = "1" style = "width: 100%;"><!--Tabla de la derecha-->
+                    {% for (index, persona) in Todos.items() %}
+                    <tr><!--Fila-->
+                    <td>{{persona.nombre}}, {{persona.apellido}}</td><!--Columna que mostrará el nombre y apellido-->
+                    <td><a href="{{url_for('ver', index = index)}}"><button name = "ver">Ver</button></a></td><!--Columna que mostrará el botón Ver-->
+                    <td><a href="{{url_for('editar', index = index)}}"><button name = "editar">Editar</button></a></td><!--Columna que mostrará el botón Editar-->
+                    <td><button name = "eliminar">Eliminar</button></td><!--Columna que mostrará el botón Eliminar-->
+                    </tr>
+                    {% endfor %}
+                <tr>
+                    <td><button name = "agregar">Agregar</button></td><!--Columna que mostrará el botón Agregar-->
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

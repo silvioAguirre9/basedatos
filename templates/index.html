@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es"> <!--Cambiamos a español-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer App en Flask</title> <!--Modificamos el Título-->
+</head>
+<body><!--Aquí comienza el cuerpo de nuestro HTML-->
+    <h1 style = "text-align:center">Directorio Telefónico - Mi primer aplicación en Flask</h1> <!--Titulo principal centrado-->
+    <br>
+    <div>    <!--Creamos un div contenedor-->
+        <div style="width: 60%; float:left; text-align:center;">    <!--Creamos el div de la izquierda-->
+            <h2>Datos completos de la persona</h2>  <!--Titulo-->
+            <table border = "1" style = "width: 100%;"> <!--Creamos la tabla con borde-->
+                <tr><!--Creamos una fila-->
+                    <td>Nombre</td> <!--Dentro de la fila las columnas-->
+                    <td>Apellido</td>
+                    <td>Apodo</td>
+                    <td>Teléfono</td>
+                    <td>Dirección</td>
+                </tr>
+                {% for (index, persona) in Todos.items() %}
+                {% if index == index_ver %}
+                <tr><!--creamos otra fila-->
+                    <td>{{persona.nombre}}</td> <!--Aquí se cargarán los datos correspondientes-->
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.apodo}}</td>
+                    <td>{{persona.telefono}}</td>
+                    <td>{{persona.direccion}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>    <!--Fin de la tabla-->
+        </div>  <!--Cierre del div de la izquierda-->
+        <div style="width: 40%; float:right; text-align:center;"> <!--Div de la derecha-->
+            <h2>Personas</h2> <!--Titulo-->
+            <table border = "1" style = "width: 100%;"><!--Tabla de la derecha-->
+                    {% for (index, persona) in Todos.items() %}
+                    <tr><!--Fila-->
+                    <td>{{persona.nombre}}, {{persona.apellido}}</td><!--Columna que mostrará el nombre y apellido-->
+                    <td><a href="{{url_for('ver', index = index)}}"><button name = "ver">Ver</button></a></td><!--Columna que mostrará el botón Ver-->
+                    <td><a href="{{url_for('editar', index = index)}}"><button name = "editar">Editar</button></a></td><!--Columna que mostrará el botón Ver-->
+                    <td><a href="{{url_for('eliminar', id = persona.id)}}"><button name = "eliminar">Eliminar</button></a></td><!--Columna que mostrará el botón Eliminar-->
+                    </tr>
+                    {% endfor %}
+                <tr>
+                    <td><a href="{{url_for('agregar', index = index)}}"><button name = "agregar">Agregar</button></a></td><!--Columna que mostrará el botón Agregar-->
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
